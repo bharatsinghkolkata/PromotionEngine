@@ -17,8 +17,18 @@ namespace PromotionEngineUnitTest
             };
 
         [TestMethod]
-        public void TestMethod1()
+        public void Test_Scenario_A()
         {
+            var order =
+              new Order
+              {
+                  Items = new List<Item>
+                  {
+                    new Item { SKU_Id = 'A', Quantity = 1 },
+                    new Item { SKU_Id = 'B', Quantity = 1 },
+                    new Item { SKU_Id = 'C', Quantity = 1 }
+                  }
+              };            
         }
     }
 }
