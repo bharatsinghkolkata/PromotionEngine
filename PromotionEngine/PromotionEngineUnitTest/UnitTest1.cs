@@ -57,9 +57,9 @@ namespace PromotionEngineUnitTest
               {
                   Items = new List<Item>
                   {
-                    new Item { SKU_Id = 'A', Quantity = 1 },
-                    new Item { SKU_Id = 'B', Quantity = 1 },
-                    new Item { SKU_Id = 'C', Quantity = 1 }
+                        new Item { SKU_Id = 'A', Quantity = 1 },
+                        new Item { SKU_Id = 'B', Quantity = 1 },
+                        new Item { SKU_Id = 'C', Quantity = 1 }
                   }
               };
 
@@ -75,13 +75,31 @@ namespace PromotionEngineUnitTest
               {
                   Items = new List<Item>
                  {
-                    new Item { SKU_Id = 'A', Quantity = 5 },
-                    new Item { SKU_Id = 'B', Quantity = 5 },
-                    new Item { SKU_Id = 'C', Quantity = 1 }}
+                        new Item { SKU_Id = 'A', Quantity = 5 },
+                        new Item { SKU_Id = 'B', Quantity = 5 },
+                        new Item { SKU_Id = 'C', Quantity = 1 }}
                  };
 
             actualEngine.CheckOut(order);
             Assert.IsTrue(order.TotalAmount == 370);
+        }
+
+        [TestMethod]
+        public void Test_Scenario_C()
+        {
+            var order =
+              new Order
+              {
+                  Items = new List<Item>
+                  {
+                        new Item { SKU_Id = 'A', Quantity = 3 },
+                        new Item { SKU_Id = 'B', Quantity = 5 },
+                        new Item { SKU_Id = 'C', Quantity = 1 },
+                        new Item { SKU_Id = 'D', Quantity = 1 }}
+                 };
+
+            actualEngine.CheckOut(order);
+            Assert.IsTrue(order.TotalAmount == 280);
         }
     }
 }
